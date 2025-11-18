@@ -213,6 +213,10 @@ a.button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; 
   cursor: pointer;
   box-shadow: var(--shadow-sm);
   transition: transform 0.12s ease, box-shadow 0.2s ease;
+  /* Para posicionar botones dentro */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .tmdb-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
 .tmdb-card img {
@@ -226,8 +230,21 @@ a.button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; 
   display: block;
   font-weight: 600;
   font-size: 0.95rem;
+  margin-bottom: 8px;
 }
 .tmdb-empty { color: var(--muted); text-align: center; }
+
+/* Botones dentro de TMDB cards */
+.tmdb-card-actions {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  margin-top: auto;
+}
+.tmdb-card-actions button {
+  font-size: 0.75rem;
+  padding: 4px 8px;
+}
 
 /* Accesibilidad auxiliar */
 .sr-only {
@@ -248,6 +265,52 @@ footer {
   border-top: 1px solid #444;
 }
 
+/* ====== KEYWORDS (Parte 3) ====== */
+.keyword-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin: var(--space-3) 0;
+  padding: 0;
+  list-style: none;
+}
+
+.keyword-tag {
+  background: var(--card-alt);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s;
+}
+
+.keyword-tag span {
+  font-weight: 500;
+}
+
+.keyword-tag button {
+  border: none;
+  background: var(--accent);
+  color: #000;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  font-size: 12px;
+  line-height: 1;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.keyword-tag button:hover {
+  background: #e6c200;
+  transform: scale(1.1);
+}
+
 /* ====== Dark Mode ====== */
 @media (prefers-color-scheme: dark) {
   :root {
@@ -263,4 +326,6 @@ footer {
   button, a.button { background: #0f141c; border-color: var(--border); color: var(--text); }
   button:hover, a.button:hover { background: var(--text); color: #0b0d11; }
   .field input { background: #0f141c; color: var(--text); border-color: var(--border); }
+  
+  .keyword-tag { background: #1f2530; }
 }
